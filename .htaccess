@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /fundacion/
+
+    # Elimina el acceso a la carpeta del sistema por parte de los usuarios.
+    RewriteCond %{REQUEST_URI} ^system.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+  
+    # Validar intento de acceso a archivos validos.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?/$1 [L]
+</IfModule>
+ 
+<IfModule !mod_rewrite.c>
+    # Error 404 
+ 
+    ErrorDocument 404 /index.php
+</IfModule>
