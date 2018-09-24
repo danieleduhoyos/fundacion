@@ -18,28 +18,28 @@
             
             <p><b>Bienvenido. </b> Por favor ingrese sus datos.</p>
 
-            <form action="" method="POST" class="content-login" id="content-login">
+            <form action="<?= base_url()?>admin/login/" method="POST" class="content-login" id="content-login">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
                     
-                    <input type="text" class="form-control" id="usu_usuario" placeholder="Usuario" autocomplete="off" maxlength="15">
+                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" autocomplete="off" maxlength="15">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
                     </div>
                     
-                    <input type="password" class="form-control" id="usu_password" placeholder="Contraseña">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
                 </div>
 
                 <input type="submit" class="btn mb-3" value="INGRESAR">
                 
                 <div class="d-flex justify-content-between">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Recuerdame</label>
+                        <input type="checkbox" class="form-check-input" id="recuerdame" name="recuerdame">
+                        <label class="form-check-label" for="recuerdame">Recuerdame</label>
                     </div>
                     <span id="btn-recover" class="span-link">Olvidé mi contraseña</span>
                 </div>
@@ -60,6 +60,16 @@
                     <span id="btn-login" class="span-link">Iniciar sesión</span>
                 </div>
             </form>
+
+            <?php
+                if($this->session->flashdata('msg')){
+                    ?>
+                    <div class="alert alert-success mt-3" role="alert">
+                        <strong>Información: </strong> <?= $this->session->flashdata('msg') ?>
+                    </div>
+                    <?php
+                }
+            ?>
         </div>
 
     </div>
