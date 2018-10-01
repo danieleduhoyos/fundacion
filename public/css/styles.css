@@ -1,0 +1,66 @@
+/* todos los titulos h3 */
+h3{
+    background-color: #FFd600;
+    border-color: #0276b8 #808080;
+    text-align: center;
+    border-width: 10px;
+    border-style: groove;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+/* todos los parrafos */
+p{
+    padding-left: 30px;
+    padding-right: 30px;
+    /* border-left: 6px solid #0276b8;
+    background-color: lightgray; */
+    text-align: justify;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #000000;
+    line-height: 20pt; 
+    font-size: 15pt; 
+    font-weight: bold;
+}
+/* todos los subtitulos */
+h4{
+    color: #FF5733;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+/* todos los ul se alejen del borde derecho e izquierdo */
+ul{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+/* color de fondo del footer */
+footer{
+    background-color: #ffff;
+}
+/* color de todos los body */
+body{
+    background-color: #EED6D0;
+}
+img#uno{
+    margin-left: 30%;
+    width: 120px;
+    height: 120px;
+}
+img#dos{
+    margin-left: 5%;
+    margin-top: 3%;
+    width: 120px;
+    height: 120px;
+}
+button#cargo{
+    margin-left: 78%;
+}
+iframe{
+    width: 100%;
+    height: 500px;
+    border: #FF5733;
+}
+div#iframe{
+    text-align: center;
+    border: #FF5733;
+}
