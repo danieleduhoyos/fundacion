@@ -7,20 +7,28 @@
     <title>Fundación Salvando Sueños</title>
 
     <!-- CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="../public/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/styles-admin.css">
 </head>
 <body>
-    <div class="container-fluid container-auth">
+    <div class="container-fluid container-admin">
         <!-- Header -->
         <?php  include_once APPPATH. 'views/templates/header-admin.php'; ?>
-        <!-- Nav -->
-        <?php  include_once APPPATH. 'views/templates/nav-admin.php'; ?>
-        
-        <?= $content_for_layout; ?>
 
-        <!-- Footer -->
-        <?php  include_once APPPATH. 'views/templates/footer-admin.php'; ?>
+        <div class="row">
+            <div class="col-md-3 p-0">
+                <!-- Nav -->
+                <?php  include_once APPPATH. 'views/templates/nav-admin.php'; ?>
+            </div>
+
+            <div class="col-md-9 p-0 main-background">
+                <!-- Main -->
+                <main class="p-3">
+                    <?= $content_for_layout; ?>
+                </main>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->

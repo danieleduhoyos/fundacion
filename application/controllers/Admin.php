@@ -14,7 +14,7 @@ class Admin extends CI_Controller {
     public function index()
 	{
 		if(Auth::validate_session()){
-			echo "Inicio de sesión exitoso";
+			$this->layout->view("index", Auth::validate_session());
 		}else{
 			$this->load->view("admin/auth");
 		}
@@ -22,24 +22,28 @@ class Admin extends CI_Controller {
 
 	public function login()
 	{
-		$usu_usuario	= $this->input->post('usuario');
-		$usu_password	= $this->input->post('password');
-		$recuerdame		= $this->input->post('recuerdame');
+		if(!Auth::validate_session()){
+			$usu_usuario	= $this->input->post('usuario');
+			$usu_password	= $this->input->post('password');
+			$recuerdame		= $this->input->post('recuerdame');
 
-		$request = $this->usuario_model->login($usu_usuario, $usu_password);
+			$request = $this->usuario_model->login($usu_usuario, $usu_password);
 
-		if($request){
-			$_SESSION[Auth::$key_session] = json_encode($request);
+			if($request){
+				$_SESSION[Auth::$key_session] = json_encode($request);
 
-			if ($recuerdame == 'on') {
-				setcookie('PHPSESSIONUSER', base64_encode($_SESSION[Auth::$key_session]), time()+604800, '/', $_SERVER['HTTP_HOST']);
+				if ($recuerdame == 'on') {
+					setcookie('PHPSESSIONUSER', base64_encode($_SESSION[Auth::$key_session]), time()+604800, '/', $_SERVER['HTTP_HOST']);
+				}
+				redirect(base_url()."admin/");
+			}else{
+				$this->session->set_flashdata('msg', "Los datos ingresados son incorrectos.");
+				$this->session->set_flashdata('type', "danger");
+				redirect($_SERVER['HTTP_REFERER']);
 			}
-			redirect(base_url()."admin/");
-		}else{
-			$this->session->set_flashdata('msg', "Los datos ingresados son incorrectos.");
-			$this->session->set_flashdata('type', "danger");
-			redirect($_SERVER['HTTP_REFERER']);
 		}
+
+		redirect(base_url()."admin/");
 	}
 
 	public function logout()
