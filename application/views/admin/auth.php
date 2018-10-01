@@ -14,11 +14,12 @@
 <body>
     <div class="container-fluid d-flex justify-content-center align-items-center container-auth">
         <div class="content-auth">
-            <img src="../public/img/logo.png" alt="Logo fundación salvando sueños" class="img-fluid pb-3">
+            <img src="<?= base_url() ?>public/img/logo.png" alt="Logo fundación salvando sueños" class="img-fluid pb-3">
             
             <p><b>Bienvenido. </b> Por favor ingrese sus datos.</p>
 
-            <form action="<?= base_url()?>admin/login/" method="POST" class="content-login" id="content-login">
+            <!-- Iniciar sesión -->
+            <form action="<?= base_url() ?>admin/login/" method="POST" class="content-login" id="content-login">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -45,13 +46,14 @@
                 </div>
             </form>
 
-            <form action="" method="POST" class="content-recover toggle-content" id="content-recover">
+            <!-- Recupera contraseña -->
+            <form action="<?= base_url() ?>admin/restore_password/" method="POST" class="content-recover toggle-content" id="content-recover">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-at"></i></span>
                     </div>
                     
-                    <input type="email" class="form-control" id="usu_correo" placeholder="E-mail" autocomplete="off" maxlength="50">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" maxlength="100">
                 </div>
 
                 <input type="submit" class="btn mb-3" value="RECUPERAR">
@@ -64,7 +66,7 @@
             <?php
                 if($this->session->flashdata('msg')){
                     ?>
-                    <div class="alert alert-success mt-3" role="alert">
+                    <div class="alert alert-<?= $this->session->flashdata('type') ?> mt-3" role="alert">
                         <strong>Información: </strong> <?= $this->session->flashdata('msg') ?>
                     </div>
                     <?php

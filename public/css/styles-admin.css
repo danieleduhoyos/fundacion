@@ -59,11 +59,15 @@ html, body{
     width: 100%;
 }
 
-.container-auth form .input-group-text,
-.container-auth form input[type=text],
-.container-auth form input[type=email],
-.container-auth form input[type=password],
-.container-auth form input[type=submit]
+.content-auth{
+    width: 320px;
+}
+
+.content-auth form .input-group-text,
+.content-auth form input[type=text],
+.content-auth form input[type=email],
+.content-auth form input[type=password],
+.content-auth form input[type=submit]
  {
     background-color: rgba(2, 118, 184, .3);
     border: none;
@@ -72,13 +76,13 @@ html, body{
     transition: 0.5s ease all;
 }
 
-.container-auth form input::placeholder{
+.content-auth form input::placeholder{
     color: #fff;
 }
 
-.container-auth form input[type=text]:focus,
-.container-auth form input[type=email]:focus,
-.container-auth form input[type=password]:focus{
+.content-auth form input[type=text]:focus,
+.content-auth form input[type=email]:focus,
+.content-auth form input[type=password]:focus{
     background-color: rgba(2, 118, 184, .3);
     border-color: transparent;
     box-shadow: none;
@@ -86,12 +90,12 @@ html, body{
     outline-style:none;
 }
 
-.container-auth form input[type=submit]{
+.content-auth form input[type=submit]{
     border-bottom: 5px solid #0276b8;
     width: 100%;
 }
 
-.container-auth form input[type=submit]:hover{
+.content-auth form input[type=submit]:hover{
     background-color: #0276b8;
     border-bottom: 5px solid #76bddb; 
     font-weight: bold;
