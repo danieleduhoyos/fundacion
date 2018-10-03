@@ -5,6 +5,10 @@
 
 1. Configuraciones Globales
 2. Inicio de sesión
+3. Configuraciónes de Admin
+    3.1 Header
+    3.2 Navigator
+4. Main
 ============================
 
 ===========================
@@ -116,4 +120,93 @@ html, body{
 .span-link{
     text-decoration: underline;
     cursor: pointer;
+}
+/*
+===========================
+3. Configuraciónes de Admin
+===========================
+*/
+
+.container-admin{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+    /*
+    ===========================
+    3.1 Header
+    ===========================
+    */
+
+    .container-admin header{
+        position: relative;
+        background-color: lavender;
+        overflow: hidden;
+    }
+
+    .container-admin header .col-img-logo{
+        border-right: none !important;
+        box-shadow: 5px 0 5px -5px gray;
+    }
+
+    .container-admin header img{
+        width: 100%;
+        height: 80px;
+        background-size: cover;
+    }
+
+    .container-admin header .btn-logout{
+        position: relative;
+        padding: 5px 10px;
+        background-color: #0276b8;
+        border-radius: 5px;
+        color: lavender;
+        border-bottom: 5px solid #76bddb;
+    }
+
+    /*
+    ===========================
+    3.2 Navigator
+    ===========================
+    */
+    .container-admin nav{
+        background-color: #0276b8;
+        height: 100vh;
+    }
+    
+    .container-admin nav li a{
+        border-bottom: 1px solid #2D83E1;
+        color: #fff;
+        font-size: 16px;
+        transition: .5s ease all;
+    }
+
+    .container-admin nav li a i{
+        transition: .5s ease all;
+    }
+    
+    .container-admin nav li a:hover{
+        font-size: 17px;
+    }
+
+    .container-admin nav li a:hover i{
+        margin-left: 10px;
+    }
+
+/*
+===========================
+4. Main
+===========================
+*/
+.main-background{
+    background-image: url("../../public/img/main-background.jpg");
+    background-size: cover;
+}
+main{
+    position: relative;
+    height: 100vh;
+    background-color: rgba(256,256,256,0.9);
+    overflow: hidden;
+    overflow-y: auto;
 }
