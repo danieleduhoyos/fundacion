@@ -12,8 +12,6 @@ h3{
 p{
     padding-left: 30px;
     padding-right: 30px;
-    /* border-left: 6px solid #0276b8;
-    background-color: lightgray; */
     text-align: justify;
     margin-left: 10%;
     margin-right: 10%;
@@ -63,4 +61,8 @@ iframe{
 div#iframe{
     text-align: center;
     border: #FF5733;
+}
+i#color{
+    color: #FF5733;
+    font-size: 25px !important;
 }

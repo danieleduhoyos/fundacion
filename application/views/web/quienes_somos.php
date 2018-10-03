@@ -2,8 +2,9 @@
 
 <!-- latidud y longitud
 2.460612, -76.537356      -->
+<!-- 2.461006, -76.537611 -->
 <div id="iframe">
-  <iframe src="https://maps.google.com/maps?width=100%&height=600&hl=es&coord=2.460612, -76.537356&q=Hostal%20Cer%C3%B3n%20Los%20Llanos+(Fundacion%20Salvando%20Sue%C3%B1os)&ie=UTF8&t=&z=14&iwloc=A&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="100">
+  <iframe src="https://maps.google.com/maps?width=100%&height=600&hl=es&coord=2.460980, -76.537600&q=Fundacion%20Cer%C3%B3n%20Los%20Llanos+(Fundacion%20Salvando%20Sue%C3%B1os)&ie=UTF8&t=&z=14&iwloc=A&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="100">
   </iframe>
 </div><br>
 <h3>SÍNTESIS</h3>
