@@ -19,7 +19,7 @@ class Usuario_model extends CI_Model{
                 
                 if(password_verify(base64_encode(hash('sha384', $password, true)), $password_db))
                 {
-                    $query = $this->db->select('per_nombre_uno, per_nombre_dos, per_apellido_uno, per_apellido_dos, usuario.id_rol, rol.rol_tipo_cargo')
+                    $query = $this->db->select('usu_usuario, usu_correo, per_fecha_registro, per_nombre_uno, per_nombre_dos, per_apellido_uno, per_apellido_dos, per_fecha_nacimiento, per_tipo_documento, per_documento, usuario.id_rol, rol.rol_tipo_cargo')
                             ->from('usuario') 
                             ->join('persona', 'usuario.id_persona = persona.id_persona')
                             ->join('rol', 'usuario.id_rol = rol.id_rol')

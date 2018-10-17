@@ -5,66 +5,59 @@ class Admin extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->layout->setLayout("admin");
-		$this->load->library('Auth');
+		$this->load->helper('functions');
+		$this->load->library('form_validation');
 		$this->load->library('email');
 		$this->load->library('mail');
-		$this->load->helper('generate_string');
 	}
     
     public function index()
 	{
-		if(Auth::validate_session()){
-			$this->layout->view("index", Auth::validate_session());
-		}else{
-			$this->load->view("admin/auth");
-		}
+		verify_token($this->session->usu_usuario, $this->session->token) ? $this->layout->view("index") : $this->load->view('admin/auth');
 	}
 
 	public function login()
 	{
-		if(!Auth::validate_session()){
-			$usu_usuario	= $this->input->post('usuario');
-			$usu_password	= $this->input->post('password');
-			$recuerdame		= $this->input->post('recuerdame');
+		if(!$this->session->token && $this->input->post()){
+			if(verify_token('ingreso-usuario', $this->input->post('token', true))){
+				$this->form_validation->set_rules('usuario', 'Usuario', 'trim|required|min_length[5]|max_length[15]');
+				$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[20]');
+				
+				if ($this->form_validation->run() == TRUE) {
+					$usu_usuario	= $this->input->post('usuario');
+					$usu_password	= $this->input->post('password');
 
-			$request = $this->usuario_model->login($usu_usuario, $usu_password);
+					$request = $this->usuario_model->login($usu_usuario, $usu_password);
 
-			if($request){
-				$_SESSION[Auth::$key_session] = json_encode($request);
-
-				if ($recuerdame == 'on') {
-					setcookie('PHPSESSIONUSER', base64_encode($_SESSION[Auth::$key_session]), time()+604800, '/', $_SERVER['HTTP_HOST']);
+					if($request){
+						$this->session->set_userdata((array) $request);
+						$this->session->set_userdata('token', generate_token($this->session->usu_usuario));
+					}else{
+						$this->session->set_flashdata('msg', "El usuario y/o la contraseña son incorrectos.");
+						$this->session->set_flashdata('type', "danger");
+					}
+				} else {
+					$this->session->set_flashdata('msg', "Datos ingresados incorrectos.");
+					$this->session->set_flashdata('type', "danger");
 				}
-				redirect(base_url()."admin/");
-			}else{
-				$this->session->set_flashdata('msg', "Los datos ingresados son incorrectos.");
-				$this->session->set_flashdata('type', "danger");
-				redirect($_SERVER['HTTP_REFERER']);
+				
 			}
 		}
-
 		redirect(base_url()."admin/");
 	}
 
 	public function logout()
 	{
-		if(Auth::validate_session()){
-			// Eliminar las variables de la sesión;
-            unset($_SESSION[Auth::$key_session]);
-            unset($_COOKIE['PHPSESSIONUSER']);
-
-            // Eliminar los contenedores de la sessión
-            setcookie('PHPSESSIONUSER', '', time() - 604800, '/', $_SERVER['HTTP_HOST']);
-			
-			$this->session->set_flashdata('msg', 'Sesión cerrada exitosamente.');
-			$this->session->set_flashdata('type', "success");
+		if(verify_token($this->session->usu_usuario, $this->session->token)){
+			$this->session->sess_destroy();
 		}
 
 		redirect(base_url()."admin/");
 	}
 
-	public function restore_password(){
-		if(!Auth::validate_session()){
+	public function restore_password()
+	{
+		if(!$this->session->token){
 			$usu_correo = $this->input->post('email');
 
 			$request_user = $this->usuario_model->validate_email($usu_correo);
@@ -79,11 +72,14 @@ class Admin extends CI_Controller {
 					if($send_email){
 						$this->session->set_flashdata('msg', "Se envío un e-mail a $usu_correo por favor revise su bandeja de entrada.");
 						$this->session->set_flashdata('type', "success");
+					}else{
+						$this->session->set_flashdata('msg', "No se realizo  el envio de un e-mail a $usu_correo por favor intente nuevamente");
+						$this->session->set_flashdata('type', "warning");
 					}
 				}
 			}else{
 				$this->session->set_flashdata('msg', "El e-mail $usu_correo no se encuentra registrado.");
-				$this->session->set_flashdata('type', "warning");
+				$this->session->set_flashdata('type', "danger");
 			}
 		}
 
