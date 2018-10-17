@@ -42,16 +42,28 @@ de apoyo en una prueba cognitiva acorde a las capacidades para el caso de los be
     <li><p>Protocolo general de Psicología.</p></li>
 </ul>
 </p>
-<h4>Historia Clínica Psicológica</h4>
-<p>En el que se indagan aspectos como: Datos generales, Impresión diagnóstica, Antecedentes personales, Psiquiátricos,
-  médicos, Familiares, Emocionales, Comportamiento durante la sesión, estado mental (porte y actitud, 
-  conciencia, atención, orientación, pensamiento, lenguaje, memoria, inteligencia, juicio, raciocinio) 
-  y se dan recomendaciones.
-</p>
-<h4>Protocolo interventivo especifico área Psicología</h4>
-<p>A partir de la observación directa y comportamental se estructura el protocolo específico para trabajar
-  durante el proceso del niño, niña, adolescente y mayor de 18 años, en el cual se establecen las técnicas
-  interventivas a realizar con el objetivo de contribuir a trasformar la trayectoria de vida dentro de curso
-  de vida del beneficiario y por ende mejorar sus condiciones de vida.
-</p>
+<div id="accordion">
+    <h4 id="cambiar" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="fas fa-plus-circle"> Historia Clínica Psicológica</i></h4>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <p>En el que se indagan aspectos como: Datos generales, Impresión diagnóstica, Antecedentes personales, Psiquiátricos,
+            médicos, Familiares, Emocionales, Comportamiento durante la sesión, estado mental (porte y actitud, 
+            conciencia, atención, orientación, pensamiento, lenguaje, memoria, inteligencia, juicio, raciocinio) 
+            y se dan recomendaciones.
+          </p>
+        </div>
+    </div>
+</div>
+<div id="accordion">
+    <h4 id="cambiar" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="fas fa-plus-circle"> Protocolo Interventivo Especifico área Psicología</i></h4>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <p>A partir de la observación directa y comportamental se estructura el protocolo específico para trabajar
+            durante el proceso del niño, niña, adolescente y mayor de 18 años, en el cual se establecen las técnicas
+            interventivas a realizar con el objetivo de contribuir a trasformar la trayectoria de vida dentro de curso
+            de vida del beneficiario y por ende mejorar sus condiciones de vida.
+          </p>
+        </div>
+    </div>
+</div>
 </body>

@@ -5,16 +5,21 @@ h3{
     text-align: center;
     border-width: 10px;
     border-style: groove;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 30px;
+    margin-right: 30px;
+    cursor: pointer; 
+} 
+h3:hover{
+     
 }
+
 /* todos los parrafos */
 p{
     padding-left: 30px;
     padding-right: 30px;
     text-align: justify;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 10px;
+    margin-right: 10px;
     color: #000000;
     line-height: 20pt; 
     font-size: 15pt; 
@@ -25,6 +30,11 @@ h4{
     color: #FF5733;
     margin-left: 10%;
     margin-right: 10%;
+    cursor: grab;
+}
+/* cambiar de color al pasarle el mouse en el h4 */
+h4#cambiar:hover{
+    color: #4AC9B0;
 }
 /* todos los ul se alejen del borde derecho e izquierdo */
 ul{
@@ -34,25 +44,37 @@ ul{
 /* color de fondo del footer */
 footer{
     background-color: #ffff;
+    position: relative;
+    flex: 0 0 auto;
+}
+b#footer{
+    /* background-color: #FFd600; */
+    padding-left: 20px;
+    padding-right: 20px;
 }
 /* color de todos los body */
 body{
     background-color: #EED6D0;
 }
+/* imagen que va dentro de el modal */
 img#uno{
-    margin-left: 30%;
+    display:block;
+    margin:auto;
     width: 120px;
     height: 120px;
 }
-img#dos{
-    margin-left: 5%;
-    margin-top: 3%;
-    width: 120px;
-    height: 120px;
-}
+/* boton del cargo */
 button#cargo{
-    margin-left: 78%;
+    margin-left: 30px;
+    float: right;
+    color: #0276b8;
+    line-height: 20pt; 
+    font-size: 15pt;
+    animation: btn-girar 10s infinite; 
+    animation-timing-function: linear;
+    cursor: grab;
 }
+/* estilo de el mapa */
 iframe{
     width: 100%;
     height: 500px;
@@ -62,7 +84,15 @@ div#iframe{
     text-align: center;
     border: #FF5733;
 }
+/* cambiarle el color a un icono */
 i#color{
     color: #FF5733;
     font-size: 25px !important;
+}
+@keyframes btn-girar {
+    from{
+        /* , 0px */
+        transform: translate(-160px, 0px);
+    }
+    /* -2px, -9px) */
 }
