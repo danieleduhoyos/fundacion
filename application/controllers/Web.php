@@ -8,7 +8,8 @@ class Web extends CI_Controller {
 	}
     public function index()
 	{
-		$this->layout->view("inicio");
+		$noticia=$this->web_model->ver_noticias();
+		$this->layout->view("inicio", compact('noticia'));
 	}
 	public function administrativa()
 	{
@@ -45,5 +46,10 @@ class Web extends CI_Controller {
 	public function trabajo_social()
 	{
 		$this->layout->view("trabajo_social");
+	}
+	public function informe()
+	{
+		$informe= $this->web_model->ver_archivos();
+		$this->layout->view("informe",compact('informe'));
 	}
 }

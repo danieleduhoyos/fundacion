@@ -30,7 +30,7 @@
         <a class="nav-link disabled" href="<?= base_url().'web/marco_legal'?>" style="color: black;"><b>Marco Legal</b></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" style="color: black;"><b>Informes</b></a>
+        <a class="nav-link disabled" href="<?= base_url().'web/informe'?>" style="color: black;"><b>Informes</b></a>
       </li>
     </ul>
   </div>
