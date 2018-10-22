@@ -81,12 +81,12 @@ class Informe extends CI_Controller{
         if(is_file($path_file)){
             header("Content-disposition: attachment; filename=$document");
             header("Content-type: MIME");
-            readfile($directory);
+            readfile($path_file);
         }else{
             $this->session->set_flashdata('msg', 'Documento no encontrado');
             $this->session->set_flashdata('type', 'danger');
 
-            redirect(base_url().'informe/');
+            echo "<script>window.history.go(-1)</script>";
         }
     }
 

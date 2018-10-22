@@ -38,7 +38,7 @@ if(count($informes) > 0){
             ?>
             <tr>
                 <td><?= $informe->fecha ?></td>
-                <td><a href="<?= base_url() ?>informe/descargar/<?= $informe->informe ?>/" target="_blank"><i class="fas fa-cloud-download-alt"></i> <?= $informe->informe ?></a></td>
+                <td><a href="<?= base_url() ?>informe/descargar/<?= $informe->informe ?>/"><i class="fas fa-cloud-download-alt"></i> <?= $informe->informe ?></a></td>
                 <td><a href="<?= base_url() ?>informe/eliminar/<?= $informe->informe ?>/" class="text-danger"><i class="fas fa-trash-alt"></i> Eliminar</a></td>
             </tr>
             <?php
