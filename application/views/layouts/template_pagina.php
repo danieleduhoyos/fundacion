@@ -3,4 +3,6 @@
 <?php echo $content_for_layout;?>
 <?php include_once('application/views/templates/footer.php') ?>
 
+<!-- Scripts -->
+<script src="<?=base_url()?>public/js/scripts.js"></script>
 

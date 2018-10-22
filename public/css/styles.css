@@ -22,8 +22,7 @@ p{
     margin-right: 10px;
     color: #000000;
     line-height: 20pt; 
-    font-size: 15pt; 
-    font-weight: bold;
+    font-size: 1em; 
 }
 /* todos los subtitulos */
 h4{
@@ -95,4 +94,13 @@ i#color{
         transform: translate(-160px, 0px);
     }
     /* -2px, -9px) */
+}
+
+.btn-blue{
+    position: relative;
+    padding: 5px 10px;
+    background-color: #0276b8;
+    border-radius: 5px;
+    color: lavender;
+    border-bottom: 5px solid #76bddb;
 }
