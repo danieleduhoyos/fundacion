@@ -19,7 +19,6 @@
       <p>Jefe Area Sanidad</p>
       <ul>
         <li>Ancizar Delgado</li>
-        <img id="uno" src="<?= base_url().'public/img/administrativo/ancizar.png'?>">
       </ul>
       <p>Coordinadora de Enfermeria</p>
       <ul>
@@ -74,19 +73,25 @@ enfermería y se realizan las tarjetas de medicamentos con sus respectivos trata
     <li><a href="https://www.buenastareas.com/ensayos/Tarjeta-De-Medicamento/849403.html" target="_blank">Tarjetas de medicamentos</a></li>
 </ul>  
 </p>
-<h4>Seguimientos y controles del área de salud</h4>
-<p>Para garantizar el bienestar y la salud, teniendo en cuenta que la discapacidad parte de una condición de salud,
-los auxiliares de enfermería están capacitados para brindar los primeros auxilios y en caso de presentarse una situación
-de emergencia, inmediatamente se hace el traslado al hospital más cercano, en nuestro caso, el Hospital 
-Toribio Maya (Hospital del Norte), éste traslado se realiza en ambulancia por contrato de la Fundación; 
-el beneficiario que requiera de alguna emergencia, se efectúa en compañía de un auxiliar de enfermería que
-se encuentre en su turno. <br><br>
-De igual manera se cuenta con las valoraciones de seguimiento por parte de los profesionales de la salud de
-Medicina General, Psiquiatría, Nutrición, odontología y en algunos casos por parte de la EPS con Fonoaudiología,
-fisioterapia, terapia ocupacional, como también especialistas particulares en caso de requerirse. Adicionalmente 
-todo los beneficiarios cuenta con acompañamiento por turnos  de auxiliares de enfermería y formadores durante las
-24 horas del día todos los días, además de monitorio por cámaras instaladas como herramienta de apoyo por iniciativa
-por los coordinadores de la modalidad, con el objetivo de velar por el cuidado e integridad de los niños, niñas, 
-adolescentes y mayores de 18 años.
-</p>
+<div id="accordion">
+    <h4 id="cambiar" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="fas fa-plus-circle"> Seguimientos y controles del área de salud</i></h4>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <p>Para garantizar el bienestar y la salud, teniendo en cuenta que la discapacidad parte de una condición de salud,
+          los auxiliares de enfermería están capacitados para brindar los primeros auxilios y en caso de presentarse una situación
+          de emergencia, inmediatamente se hace el traslado al hospital más cercano, en nuestro caso, el Hospital 
+          Toribio Maya (Hospital del Norte), éste traslado se realiza en ambulancia por contrato de la Fundación; 
+          el beneficiario que requiera de alguna emergencia, se efectúa en compañía de un auxiliar de enfermería que
+          se encuentre en su turno. <br><br>
+          De igual manera se cuenta con las valoraciones de seguimiento por parte de los profesionales de la salud de
+          Medicina General, Psiquiatría, Nutrición, odontología y en algunos casos por parte de la EPS con Fonoaudiología,
+          fisioterapia, terapia ocupacional, como también especialistas particulares en caso de requerirse. Adicionalmente 
+          todo los beneficiarios cuenta con acompañamiento por turnos  de auxiliares de enfermería y formadores durante las
+          24 horas del día todos los días, además de monitorio por cámaras instaladas como herramienta de apoyo por iniciativa
+          por los coordinadores de la modalidad, con el objetivo de velar por el cuidado e integridad de los niños, niñas, 
+          adolescentes y mayores de 18 años.
+          </p>
+        </div>
+    </div>
+</div>
 </body>

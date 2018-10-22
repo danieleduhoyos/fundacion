@@ -29,7 +29,7 @@
   </div>
 </div><br><br>
 <h4>Valoración Inicial de Trabajo Social</h4>
-<p>realizada partiendo de una entrevista abierta al beneficiario o en su defecto a su acompañante,
+<p>Realizada partiendo de una entrevista abierta al beneficiario o en su defecto a su acompañante,
 según sus características especiales lo permita, en la que se indaga antecedentes como su procedencia, 
 información sobre su red familiar y/o de apoyo, situación escolar, y en ese momento le es socializado al niño,
 niña, adolescente y mayor de 18 años que cuenta con el derecho a una llamada semanal a su red familiar y/o red 
@@ -44,32 +44,56 @@ se indaga por sus referentes de autoridades tradicionales; usos y costumbres que
 de atención integral. Complementariamente se realiza la apertura de la carpeta historia de atención
 de cada beneficiario que ingresa.
 </p>
-<h4>Intervención</h4>
-<p>Durante su estadía en la Institución, cada niño, niña, adolescente y mayor de 18 años, es intervenido en crisis,
-a nivel individual, y grupal acorde a sus necesidades; individualmente en especial desde el enfoque Cognitivo
-Conductual, y grupal contando con herramienta el Juego Cooperativo Prosocial cuyo objetivo es incrementar las
-conductas asertivas y disminuir las inadecuadas. Como también, diariamente todos cuentan con reforzamiento
-afectivo y positivo.
-</p>
-<h4>Valoración Socio-familiar</h4>
-<p>Esta valoración tiene como insumos, la elaboración del perfil de vulnerabilidad-generatividad familiar, 
-genograma, mapa de pertenencia actual y potencial y la realización de una entrevista desarrollada por el profesional
-en Trabajo Social o Desarrollo Familiar, con el acudiente del niño, niña adolescente, y mayores de 18 años.
-Durante esta entrevista se indagan aspectos relacionados con el contexto familiar, referente a: Dinámicas de
-interacción, Composición Familiar, Historia de vida familiar, Redes de apoyo familiares y sociales, Percepción
-de la familia sobre la participación en el programa. Posteriormente, con todos los insumos, el profesional elabora
-una Valoración Sociofamiliar.
-</p>
-<h4>Acompañamiento a formadores</h4>
-<p>Consiste en orientar a los formadores con el fin de realizar un acompañamiento continuo que permite mejorar los
-  procesos educativos acorde a las capacidades de los beneficiarios, a través de actividades y talleres que se
-  implemente o se establezca en su planeador.
-</p> 
-<h4>Verificación de la garantía de derechos</h4>
-<p>Mediante esta actividad se constatan los soportes que den cuenta que, al momento del egreso del niño, niña,
-  adolescente, o mayor de 18 años, cuenta con afiliación al SGSSS, documento de identidad acorde a la edad y se 
-  encuentra vinculado al sistema de educación formal (si aplica). Así mismo se orienta a la familia o red vincular
-  de apoyo y al adolescente próximo a cumplir su mayoría de edad, en el trámite y expedición de la libreta militar 
-  y la cedula de ciudadanía.
-</p>   
+<div id="accordion">
+    <h4 id="cambiar" data-toggle="collapse" data-target="#intervencion" aria-expanded="false" aria-controls="intervencion"><i class="fas fa-plus-circle"> Intervención</i></h4>
+    <div id="intervencion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <p>Durante su estadía en la Institución, cada niño, niña, adolescente y mayor de 18 años, es intervenido en crisis,
+          a nivel individual, y grupal acorde a sus necesidades; individualmente en especial desde el enfoque Cognitivo
+          Conductual, y grupal contando con herramienta el Juego Cooperativo Prosocial cuyo objetivo es incrementar las
+          conductas asertivas y disminuir las inadecuadas. Como también, diariamente todos cuentan con reforzamiento
+          afectivo y positivo.
+          </p>
+        </div>
+    </div>
+</div>
+<div id="accordion">
+    <h4 id="cambiar" data-toggle="collapse" data-target="#valoracion" aria-expanded="false" aria-controls="valoracion"><i class="fas fa-plus-circle"> Valoración Socio-Familiar</i></h4>
+    <div id="valoracion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <p>Esta valoración tiene como insumos, la elaboración del perfil de vulnerabilidad-generatividad familiar, 
+          genograma, mapa de pertenencia actual y potencial y la realización de una entrevista desarrollada por el profesional
+          en Trabajo Social o Desarrollo Familiar, con el acudiente del niño, niña adolescente, y mayores de 18 años.
+          Durante esta entrevista se indagan aspectos relacionados con el contexto familiar, referente a: Dinámicas de
+          interacción, Composición Familiar, Historia de vida familiar, Redes de apoyo familiares y sociales, Percepción
+          de la familia sobre la participación en el programa. Posteriormente, con todos los insumos, el profesional elabora
+          una Valoración Sociofamiliar.
+          </p>
+        </div>
+    </div>
+</div>
+<div id="accordion">
+    <h4 id="cambiar" data-toggle="collapse" data-target="#formadores" aria-expanded="false" aria-controls="formadores"><i class="fas fa-plus-circle">Acompañamiento a Formadores</i></h4>
+    <div id="formadores" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <p>Consiste en orientar a los formadores con el fin de realizar un acompañamiento continuo que permite mejorar los
+            procesos educativos acorde a las capacidades de los beneficiarios, a través de actividades y talleres que se
+            implemente o se establezca en su planeador.
+          </p> 
+        </div>
+    </div>
+</div>
+<div id="accordion">
+    <h4 id="cambiar" data-toggle="collapse" data-target="#garantia" aria-expanded="false" aria-controls="garantia"><i class="fas fa-plus-circle">Verificación de la Garantía de Derechos</i></h4>
+    <div id="garantia" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <p>Mediante esta actividad se constatan los soportes que den cuenta que, al momento del egreso del niño, niña,
+            adolescente, o mayor de 18 años, cuenta con afiliación al SGSSS, documento de identidad acorde a la edad y se 
+            encuentra vinculado al sistema de educación formal (si aplica). Así mismo se orienta a la familia o red vincular
+            de apoyo y al adolescente próximo a cumplir su mayoría de edad, en el trámite y expedición de la libreta militar 
+            y la cedula de ciudadanía.
+          </p>   
+        </div>
+    </div>
+</div>
 </body>

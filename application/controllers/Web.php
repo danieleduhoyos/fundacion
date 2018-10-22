@@ -49,6 +49,7 @@ class Web extends CI_Controller {
 	}
 	public function informe()
 	{
+		$date = date('Y');
 		$informe= $this->web_model->ver_archivos();
 		$this->layout->view("informe",compact('informe'));
 	}

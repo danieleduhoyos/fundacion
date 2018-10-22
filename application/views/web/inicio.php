@@ -22,10 +22,16 @@
         <span class="sr-only">Next</span>
     </a>
 </div><br>
-<h3>Noticias</h3><br>
-<?php foreach($noticia as $person){?>
-<h4><?php echo $person->titulo;?></h4>
-<p><?php echo $person->descripcion;?></p>
-<?php 
-}?>
+<div id="accordion">
+    <h3 data-toggle="collapse" data-target="#noticias" aria-expanded="false" aria-controls="noticias">NOTICIAS</h3>
+    <div id="noticias" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+            <?php foreach($noticia as $person){?>
+            <h4><?php echo $person->titulo;?></h4>
+            <p><?php echo $person->descripcion;?></p>
+            <?php 
+            }?>
+        </div>
+    </div>
+</div>
 </body>

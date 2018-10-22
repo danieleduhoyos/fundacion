@@ -25,4 +25,8 @@ class Web_model extends CI_Model{
                         ->get();
         return $query->result();
     }
+    public function registrar_informe($data_imagen=array())
+    {
+        $this->db->insert('informe',$data_imagen);
+    }
 }
