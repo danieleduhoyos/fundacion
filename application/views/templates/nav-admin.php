@@ -16,10 +16,10 @@
             if($this->session->rol_tipo_cargo == "admin"){
                 ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>informes/"><i class="fas fa-file-invoice-dollar"></i> Informes Financieros</a>
+                    <a class="nav-link" href="<?= base_url() ?>informe/"><i class="fas fa-file-invoice-dollar"></i> Informes Financieros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>noticias/"><i class="fas fa-file-alt"></i></i> Noticias</a>
+                    <a class="nav-link" href="<?= base_url() ?>noticia/"><i class="fas fa-file-alt"></i></i> Noticias</a>
                 </li>
             <?php
             }

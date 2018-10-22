@@ -33,9 +33,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="../public/js/jquery-3.2.1.slim.min.js"></script>
-    <script src="../public/js/popper.min.js"></script>
-    <script src="../public/js/bootstrap.min.js"></script>
-    <script src="../public/js/scripts-admin.js"></script>
+    <script src="<?= base_url() ?>public/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="<?= base_url() ?>public/js/popper.min.js"></script>
+    <script src="<?= base_url() ?>public/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>public/js/scripts-admin.js"></script>
 </body>
 </html>
