@@ -1,3 +1,10 @@
+let btn_eliminar_noticia            = document.getElementsByClassName('btn-eliminar-noticia');
+let btn_confirmar_eliminar_noticia  = document.getElementById('btn-confirmar-eliminar-noticia');
+let href_eliminar_noticia           = btn_confirmar_eliminar_noticia.getAttribute('href');
+let btn_ver_editar_noticia          = document.getElementsByClassName('btn-ver-editar-noticia');
+let img_noticia                     = document.getElementById('img-ver-noticia'); 
+let src_img_noticia                 = img_noticia.getAttribute('src'); 
+
 function toggle_content(){
     let content_login = document.getElementById("content-login");
     let content_recover = document.getElementById("content-recover");
@@ -51,7 +58,7 @@ function main(){
 
         registrar_informe.addEventListener("submit", (e) => {
             fecha_informe.classList.remove('is-invalid');
-            e.preventDefault();
+            ime.preventDefault();
 
             ajax('validar_informe/?fecha_search=' + fecha_informe.value,
                 'GET',
@@ -66,6 +73,39 @@ function main(){
                 });
         });
     }
+
+    // Eliminar Noticia
+    for (let i = 0; i < btn_eliminar_noticia.length; i++) {
+        btn_eliminar_noticia[i].addEventListener('click', function(){
+            btn_confirmar_eliminar_noticia.setAttribute('href', href_eliminar_noticia + this.getAttribute('data-noticia'));
+        });
+    }
+
+    // Ver editar noticia
+    for (let i = 0; i < btn_ver_editar_noticia.length; i++) {
+        btn_ver_editar_noticia[i].addEventListener('click', function(){
+            ajax('ver/?id_noticia=' + this.getAttribute('data-noticia'),
+                'GET',
+                'JSON',
+                function (data){
+                    img_noticia.setAttribute('src', src_img_noticia + data[0].imagen);
+
+                    let id_editar_noticia       = document.getElementById('id-editar-noticia');
+                    let img_data_noticia      = document.getElementById('img-data-noticia');
+                    let titulo_editar_noticia   = document.getElementById('titulo-editar-noticia');
+                    let desc_editar_noticia     = document.getElementById('desc-editar-noticia');
+
+                    id_editar_noticia.value     = data[0].id_noticia;
+                    img_data_noticia.value    = data[0].imagen;
+                    titulo_editar_noticia.value = data[0].titulo;
+                    desc_editar_noticia.value   = data[0].descripcion;
+
+                    console.log(data);
+                }
+            );
+        });
+    }
 }
+
 
 window.onload = main;

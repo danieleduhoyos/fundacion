@@ -1,5 +1,5 @@
 <nav class="py-2">
-<ul class="nav flex-column px-2">
+    <ul class="nav flex-column px-2">
         <?php
             if($this->session->rol_tipo_cargo === "jefe"){
                 ?>

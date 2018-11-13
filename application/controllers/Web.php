@@ -8,8 +8,8 @@ class Web extends CI_Controller {
 	}
     public function index()
 	{
-		$noticia=$this->web_model->ver_noticias();
-		$this->layout->view("inicio", compact('noticia'));
+		$noticias = $this->noticia_model->ver_noticias(3);
+		$this->layout->view("inicio", compact('noticias'));
 	}
 	public function administrativa()
 	{

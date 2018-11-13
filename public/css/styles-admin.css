@@ -9,6 +9,7 @@
     3.1 Header
     3.2 Navigator
 4. Main
+    4.1 Noticias
 ============================
 
 ===========================
@@ -44,7 +45,7 @@
 
 html, body{
     height: 100%;
-    max-height: 100%;
+    height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -71,11 +72,9 @@ html, body{
     position: relative;
     width: 100%;
 }
-
 .content-auth{
     width: 320px;
 }
-
 .content-auth form .input-group-text,
 .content-auth form input[type=text],
 .content-auth form input[type=email],
@@ -88,11 +87,9 @@ html, body{
     height: 3em;
     transition: 0.5s ease all;
 }
-
 .content-auth form input::placeholder{
     color: #fff;
 }
-
 .content-auth form input[type=text]:focus,
 .content-auth form input[type=email]:focus,
 .content-auth form input[type=password]:focus{
@@ -102,30 +99,25 @@ html, body{
     color: #fff;
     outline-style:none;
 }
-
 .content-auth form input[type=submit]{
     border-bottom: 5px solid #0276b8;
     width: 100%;
 }
-
 .content-auth form input[type=submit]:hover{
     background-color: #0276b8;
     border-bottom: 5px solid #76bddb; 
     font-weight: bold;
 }
-
 .content-login, .content-recover{
     overflow: hidden;
     transition: 1s linear all;
     opacity: 1;
     height: auto;
 }
-
 .toggle-content{
     opacity: 0 !important;
     height: 0 !important;
 }
-
 .span-link{
     text-decoration: underline;
     cursor: pointer;
@@ -137,8 +129,9 @@ html, body{
 */
 
 .container-admin{
+    position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -150,21 +143,18 @@ html, body{
 
     .container-admin header{
         position: relative;
+        height: 80px;
         background-color: lavender;
-        overflow: hidden;
     }
-
     .container-admin header .col-img-logo{
         border-right: none !important;
         box-shadow: 5px 0 5px -5px gray;
     }
-
     .container-admin header img{
         width: 100%;
-        height: 70px;
+        height: 100%;
         background-size: cover;
     }
-
     .container-admin header .btn-logout{
         position: relative;
         padding: 5px 10px;
@@ -181,7 +171,7 @@ html, body{
     */
     .container-admin nav{
         background-color: #0276b8;
-        height: 100vh;
+        height: calc(100vh - 80px);
     }
     
     .container-admin nav li a{
@@ -214,7 +204,7 @@ html, body{
 }
 main{
     position: relative;
-    height: 100vh;
+    height: calc(100vh - 80px);
     background-color: rgba(255,255,255,0.9);
     overflow: hidden;
     overflow-y: auto;
@@ -225,3 +215,26 @@ main{
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
+
+    /*
+    ===========================
+    4.1 Noticias
+    ===========================
+    */
+    img.img-noticia{
+        width: 100%;
+        height: 250px;
+    }
+    .card-title{
+        width: 100%;
+        height: 80px;
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #ver-editar-noticia .card{
+        width: 100%;
+    }
