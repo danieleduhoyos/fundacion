@@ -116,7 +116,7 @@ if(count($noticias) > 0){ ?>
         <div class="modal-body" id="descripcion-noticia">
             <form class="text-right" action="<?= base_url() ?>noticia/editar/" method="POST" enctype="multipart/form-data" id="form-editar-noticia">
                 <input type="hidden" id="id-editar-noticia" name="id-editar-noticia">
-                <input type="hidden" id="img-data-noticia" name="img-data-noticia">
+                
                 <div class="form-group row">
                     <label for="titulo-noticia" class="col-md-4">Titulo:</label>
                     <div class="col-md-8">

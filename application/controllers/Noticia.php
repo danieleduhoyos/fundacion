@@ -8,6 +8,7 @@ class Noticia extends CI_Controller{
         $this->layout->setLayout('admin');
     }
 
+    // Funciones Publico
     public function index(){
         if(verify_token($this->session->usu_usuario, $this->session->token)){
             $noticias = $this->noticia_model->noticias();
@@ -26,50 +27,33 @@ class Noticia extends CI_Controller{
         echo json_encode($noticia);
     }
 
+    // Funciones Administrativas
     public function create(){
         if(verify_token($this->session->usu_usuario, $this->session->token)){
-            $directory  = $_SERVER['DOCUMENT_ROOT'].'/'.$this->config->item('app_name').'public/noticias/';
-            $ext        = strtolower(pathinfo($_FILES['img-noticia']['name'], PATHINFO_EXTENSION));
-            $fecha_now  = date("YmdHis");
-            $name_file  = 'noticia-'.$fecha_now.'.'.$ext;
-            $path_file  = $directory.$name_file;
-            $size       =  $_FILES['img-noticia']['size'];
-            
-            if($size <= 1000000 ){
-                if($ext === 'png' || $ext === 'PNG' || $ext === 'jpg' || $ext === 'JPG' || $ext === 'jpeg' || $ext === 'JPEG'){
-                    if(file_exists($path_file)){
-                        unlink($path_file);
-                    }
-                    if(move_uploaded_file($_FILES['img-noticia']['tmp_name'], $path_file)){
-                        
-                        $data = array(
-                            'titulo'            => $this->input->post('titulo-noticia'),
-                            'descripcion'       => $this->input->post('desc-noticia'),
-                            'imagen'            => $name_file,
-                            'fecha_publicacion' => date('Y-m-d H:i:s')
-                        );
+            $upload = $this->upload_file('noticias', 'image', $_FILES['img-noticia'], 'noticia', 2);
 
-                        $request = $this->noticia_model->registrar($data);
-                        
-                        if($request){
-                             $this->session->set_flashdata("msg", "Noticia Registrado exitosamente");
-                             $this->session->set_flashdata("type", "success");
-                        }else{
-                             unlink($path_file);
-                        }
-                    }
+            if($upload['success']){
+                $data = array('titulo'            => $this->input->post('titulo-noticia'),
+                              'descripcion'       => $this->input->post('desc-noticia'),
+                              'imagen'            => $upload['name_file'],
+                              'fecha_publicacion' => date('Y-m-d H:i:s'));
+
+                $request = $this->noticia_model->registrar($data);
+                
+                if($request){
+                    $this->session->set_flashdata(array('msg' => 'Noticia Registrada exitosamente', 'type' => 'success'));
                 }else{
-                    $this->session->set_flashdata('msg', 'El archivo que intenta subir no es una imágen');
-                    $this->session->set_flashdata('type', 'warning');
+                    $this->session->set_flashdata(array('msg' => 'No se pudo registrar la noticia. Intente nuevamente', 'type' => 'danger'));
+
+                    if(is_file($upload['path_file'])){
+                        unlink($upload['path_file']);
+                    }
                 }
             }else{
-                $this->session->set_flashdata('msg', 'El tamaño del archivo es muy grande el tamaño maximo es de 1MB');
-                $this->session->set_flashdata('type', 'warning');
-            }
-            
+                $this->session->set_flashdata(array('msg' => $upload['error'], 'type' => 'danger'));
+            }   
             redirect(base_url().'noticia/');
         }
-
         redirect(base_url().'admin/');
     }
 
@@ -81,18 +65,17 @@ class Noticia extends CI_Controller{
             $directory  = $_SERVER['DOCUMENT_ROOT'].'/'.$this->config->item('app_name').'public/noticias/';
             $path_file  = $directory . $request_file;
 
-            echo $path_file;
-
             if($request_delete){
+                $this->session->set_flashdata(array('msg' => 'Noticia eliminada exitosamente', 'type' => 'success'));
+                
                 if(file_exists($path_file)){
                     unlink($path_file);
                 }
-
-                $this->session->set_flashdata('msg', 'La noticia fue eliminada exitosamente');
-                $this->session->set_flashdata('type', 'success');
-
-                redirect(base_url().'noticia/');
+            }else{
+                $this->session->set_flashdata(array('msg' => 'No se eliminó la noticia. Intente nuevamente', 'type' => 'danger'));
             }
+            
+            redirect(base_url().'noticia/');
         }
 
         redirect(base_url().'admin/');
@@ -100,57 +83,61 @@ class Noticia extends CI_Controller{
 
     public function editar(){
         if(verify_token($this->session->usu_usuario, $this->session->token)){
-            $image_noticia = $this->input->post('img-data-noticia');
-
-            if($_FILES['img-editar-noticia']['error'] == 0){
-                $directory  = $_SERVER['DOCUMENT_ROOT'].'/'.$this->config->item('app_name').'public/noticias/';
-                $ext        = strtolower(pathinfo($_FILES['img-editar-noticia']['name'], PATHINFO_EXTENSION));
-                $fecha_now  = date("YmdHis");
-                $name_file  = 'noticia-'.$fecha_now.'.'.$ext;
-                $path_file  = $directory.$name_file;
-                $size       =  $_FILES['img-editar-noticia']['size'];
-                
-                if($size <= 1000000 ){
-                    if($ext === 'png' || $ext === 'PNG' || $ext === 'jpg' || $ext === 'JPG' || $ext === 'jpeg' || $ext === 'JPEG'){
-                        if(file_exists($path_file)){
-                            unlink($path_file);
-                        }
-                        if(move_uploaded_file($_FILES['img-editar-noticia']['tmp_name'], $path_file)){
-                            $image_noticia = $name_file;
-
-                            unlink($directory.$this->input->post('img-data-noticia'));
-                        }
-                    }else{
-                        $this->session->set_flashdata('msg', 'El archivo que intenta subir no es una imágen');
-                        $this->session->set_flashdata('type', 'warning');
-                    }
-                }else{
-                    $this->session->set_flashdata('msg', 'El tamaño del archivo es muy grande el tamaño maximo es de 1MB');
-                    $this->session->set_flashdata('type', 'warning');
-                }
-
-            }
-
             $data = array(
-                'id'                => $this->input->post('id-editar-noticia'),
                 'titulo'            => $this->input->post('titulo-editar-noticia'),
-                'descripcion'       => $this->input->post('desc-editar-noticia'),
-                'imagen'            => $image_noticia
+                'descripcion'       => $this->input->post('desc-editar-noticia')
             );
-
-            $request = $this->noticia_model->editar($data);
-                        
-            if($request){
-                    $this->session->set_flashdata("msg", "Noticia Actualizada exitosamente");
-                    $this->session->set_flashdata("type", "success");
-            }else{
-                    unlink($path_file);
+            
+            if($_FILES['img-editar-noticia']['error'] == 0){
+                $upload = $this->upload_file('noticias', 'image', $_FILES['img-editar-noticia'], 'noticia', 2);
+                $data['imagen'] = $upload['name_file'];
             }
 
+            $request = $this->noticia_model->editar($this->input->post('id-editar-noticia'), $data);
+
+            if($request){
+                $this->session->set_flashdata(array('msg' => 'Noticia actualizada exitosamente', 'type' => 'success'));
+            }else{
+                $this->session->set_flashdata(array('msg' => 'No se pudo editar la noticia. Intente nuevamente', 'type' => 'danger'));
+
+                if(is_file($upload['path_file'])){
+                    unlink($upload['path_file']);
+                }
+            }
             redirect(base_url().'noticia/');
         }
+        
+    }
 
-        redirect(base_url().'admin/');
+    // Funciones de Archivos
+    public function upload_file($directory = null, $type = null, $file = null, $name = null, $size = 0){
+        $path       = $_SERVER['DOCUMENT_ROOT'].'/'.$this->config->item('app_name').'public/';
+        $fecha_now  = date("YmdHis");
+        $ext        = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $name_file  = "$name-$fecha_now.$ext";
+        $path_file  = "$path$directory/$name_file";
+        $size_file  = $file['size'];
+
+        $size_allow = ($size * 1000000);
+        $data = array();
+
+        if($size_file <= $size_allow){
+            switch($type){
+                case 'image':
+                    if($ext === 'png' || $ext === 'PNG' || $ext === 'jpg' || $ext === 'JPG' || $ext === 'jpeg' || $ext === 'JPEG'){
+                        $data['success']    = move_uploaded_file($file['tmp_name'], $path_file);
+                        $data['name_file']  = $name_file;
+                        $data['path_file'] = $path_file;
+                    }else{
+                        $data['error'] = "El archivo que intenta subir no es una imagén.";
+                    }
+                break;  
+            }
+        }else{
+            $data['error'] = "El archivo que intenta subir es muy grande el tamaño maximo es de $size MB";
+        }
+
+        return $data;
     }
 }
 ?>

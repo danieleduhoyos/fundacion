@@ -91,12 +91,10 @@ function main(){
                     img_noticia.setAttribute('src', src_img_noticia + data[0].imagen);
 
                     let id_editar_noticia       = document.getElementById('id-editar-noticia');
-                    let img_data_noticia      = document.getElementById('img-data-noticia');
                     let titulo_editar_noticia   = document.getElementById('titulo-editar-noticia');
                     let desc_editar_noticia     = document.getElementById('desc-editar-noticia');
 
                     id_editar_noticia.value     = data[0].id_noticia;
-                    img_data_noticia.value    = data[0].imagen;
                     titulo_editar_noticia.value = data[0].titulo;
                     desc_editar_noticia.value   = data[0].descripcion;
 

@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fundación Salvando Sueños</title>
 
+    <!-- Icon -->
+    <link rel="icon" type="image/png" alt="Fundacion Salvando Sue&ntilde;os"  href="<?php echo base_url();?>public/img/logo.png"/>
+
     <!-- CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= base_url() ?>public/css/bootstrap.min.css">

@@ -65,12 +65,10 @@ class Noticia_model extends CI_Model{
         return $this->db->affected_rows();
     }
 
-    public function editar($data = array()){
-        $query = $this->db->set('titulo', $data['titulo'])
-                          ->set('descripcion', $data['descripcion'])
-                          ->set('imagen', $data['imagen'])
-                          ->where('id_noticia', $data['id'])
-                          ->update('noticia');
+    public function editar($id_noticia = null, $data = array()){
+        $query = $this->db->where('id_noticia', $id_noticia)
+                          ->update('noticia', $data);
+                          
         return $this->db->affected_rows();
     }
 }
