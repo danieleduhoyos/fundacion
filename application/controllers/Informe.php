@@ -21,40 +21,45 @@ class Informe extends CI_Controller{
 
     public function registrar(){
         if(verify_token($this->session->usu_usuario, $this->session->token)){
-            $directory  = $_SERVER['DOCUMENT_ROOT'].'/'.$this->config->item('app_name').'public/informes/';
-            $ext        = strtolower(pathinfo($_FILES['informe']['name'], PATHINFO_EXTENSION));
-            $name_file  = 'informe-financiero-'.$this->input->post('fecha').'.'.$ext;
-            $path_file  = $directory.$name_file;
-            $size       =  $_FILES['informe']['size'];
+            if(count($_FILES) > 0){
+                $directory  = $_SERVER['DOCUMENT_ROOT'].'/'.$this->config->item('app_name').'public/informes/';
+                $ext        = strtolower(pathinfo($_FILES['informe']['name'], PATHINFO_EXTENSION));
+                $name_file  = 'informe-financiero-'.$this->input->post('fecha').'.'.$ext;
+                $path_file  = $directory.$name_file;
+                $size       =  $_FILES['informe']['size'];
 
-            if($size <= 2000000 ){
-                if($ext === 'pdf'){
-                    if(file_exists($path_file)){
-                        unlink($path_file);
-                    }
-                    if(move_uploaded_file($_FILES['informe']['tmp_name'], $path_file)){
-                        
-                        $data = array(
-                            'fecha'   => $this->input->post('fecha'),
-                            'informe' => $name_file
-                        );
-                        
-                        $request = $this->informe_model->registrar($data);
-                        
-                        if($request){
-                            $this->session->set_flashdata("msg", "Informe Registrado exitosamente");
-                            $this->session->set_flashdata("type", "success");
-                        }else{
+                if($size <= 2000000 ){
+                    if($ext === 'pdf'){
+                        if(file_exists($path_file)){
                             unlink($path_file);
                         }
+                        if(move_uploaded_file($_FILES['informe']['tmp_name'], $path_file)){
+                            
+                            $data = array(
+                                'fecha'   => $this->input->post('fecha'),
+                                'informe' => $name_file
+                            );
+                            
+                            $request = $this->informe_model->registrar($data);
+                            
+                            if($request){
+                                $this->session->set_flashdata("msg", "Informe Registrado exitosamente");
+                                $this->session->set_flashdata("type", "success");
+                            }else{
+                                unlink($path_file);
+                            }
+                        }
+                    }else{
+                        $this->session->set_flashdata('msg', 'El archivo que intenta subir no es un documento PDF');
+                        $this->session->set_flashdata('type', 'warning');
                     }
                 }else{
-                    $this->session->set_flashdata('msg', 'El archivo que intenta subir no es un documento PDF');
+                    $this->session->set_flashdata('msg', 'El tamaño del archivo es muy grande el tamaño maximo es de 2MB');
                     $this->session->set_flashdata('type', 'warning');
                 }
             }else{
-                $this->session->set_flashdata('msg', 'El tamaño del archivo es muy grande el tamaño maximo es de 2MB');
-                $this->session->set_flashdata('type', 'warning');
+                $this->session->set_flashdata('msg', 'Ocurrio un error al intentar subir el archivo. Por favor intentelo de nuevo.');
+                $this->session->set_flashdata('type', 'danger');
             }
             
             redirect(base_url().'informe/');

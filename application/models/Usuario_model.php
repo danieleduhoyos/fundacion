@@ -60,4 +60,21 @@ class Usuario_model extends CI_Model{
 
         return null;
     }
+
+    public function validate_password($usuario, $password){
+        if($usuario && $password){
+            $query_password = $this->db->select('usu_contrasena')->from('usuario')->where("usu_usuario = \"$usuario\" LIMIT 1")->get();
+
+            if($this->db->affected_rows()){
+                $password_db = $query_password->row()->usu_contrasena;
+                
+                if(password_verify(base64_encode(hash('sha384', $password, true)), $password_db))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 }

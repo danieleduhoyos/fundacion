@@ -1,9 +1,9 @@
 let btn_eliminar_noticia            = document.getElementsByClassName('btn-eliminar-noticia');
 let btn_confirmar_eliminar_noticia  = document.getElementById('btn-confirmar-eliminar-noticia');
-let href_eliminar_noticia           = btn_confirmar_eliminar_noticia.getAttribute('href');
+let href_eliminar_noticia           = (btn_confirmar_eliminar_noticia) ? btn_confirmar_eliminar_noticia.getAttribute('href') : null;
 let btn_ver_editar_noticia          = document.getElementsByClassName('btn-ver-editar-noticia');
 let img_noticia                     = document.getElementById('img-ver-noticia'); 
-let src_img_noticia                 = img_noticia.getAttribute('src'); 
+let src_img_noticia                 = (img_noticia) ? img_noticia.getAttribute('src') : null; 
 
 function toggle_content(){
     let content_login = document.getElementById("content-login");
@@ -25,23 +25,23 @@ function ajax(url = null, method = null, type = null, func = null){
                 break;
                 case 'TEXT' : 
                 data = this.responseText;
-                        break;
+                break;
                     default:
                     data = this.responseText;
-                        break;
+                    break;
                     }
-                func(data);
+                    func(data);
             }
         };
         xhttp.open(method, url, true);
         xhttp.send();
-}
+    }
 
 function main(){
     // Login 
     let btn_login  = document.getElementById("btn-login");
     let btn_recover = document.getElementById("btn-recover");
-
+    
     if(btn_login) {
         btn_login.addEventListener("click", toggle_content);
     }
@@ -58,7 +58,7 @@ function main(){
 
         registrar_informe.addEventListener("submit", (e) => {
             fecha_informe.classList.remove('is-invalid');
-            ime.preventDefault();
+            e.preventDefault();
 
             ajax('validar_informe/?fecha_search=' + fecha_informe.value,
                 'GET',
@@ -72,6 +72,8 @@ function main(){
                     }
                 });
         });
+
+        console.log("Entro aqui");
     }
 
     // Eliminar Noticia
@@ -103,6 +105,34 @@ function main(){
             );
         });
     }
+
+
+    // Actualizar Password
+    let btn_actualizar_password = document.getElementById('btn-actualizar-password');
+    let contrasena_nueva        = document.getElementById('contrasena-nueva');
+    let confirmar_contrasena    = document.getElementById('contrasena-confirmar');
+
+    function validate_password(){
+        let txt_validacion_contrasena = document.getElementById('text-validacion-contrasena');
+
+        if(contrasena_nueva.value === confirmar_contrasena.value){
+            btn_actualizar_password.removeAttribute('disabled');
+            txt_validacion_contrasena.innerText = '* Las contraseñas ingresadas coinciden';
+            txt_validacion_contrasena.style.color = 'green';
+        }
+        else{
+            btn_actualizar_password.setAttribute('disabled', true);
+
+            if(confirmar_contrasena.value.length > 0 && contrasena_nueva.value.length > 0){
+                txt_validacion_contrasena.innerText = '* Las contraseñas ingresadas no coinciden';
+                txt_validacion_contrasena.style.color = 'red';
+            }
+        }
+    }
+
+    contrasena_nueva.addEventListener('change', validate_password);
+    confirmar_contrasena.addEventListener('change', validate_password);
+    
 }
 
 

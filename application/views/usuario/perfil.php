@@ -1,3 +1,16 @@
+<?php
+    if($this->session->flashdata('msg')){
+        ?>
+        <div class="alert alert-<?= $this->session->flashdata('type') ?> alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <?= $this->session->flashdata('msg') ?>
+        </div>
+        <?php
+    }
+?>
+
 <div class="row">
     <!-- Datos de Persona -->
     <div class="col-md-6">
@@ -47,7 +60,6 @@
                         <input type="date" class="form-control" id="per_fecha_nacimiento" value="<?= $this->session->per_fecha_nacimiento ?>" readonly>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-blue">Editar</button>
             </form>
         </section>
     </div>
@@ -82,8 +94,47 @@
                         <input type="date" class="form-control" id="per_fecha_registro" value="<?= $this->session->per_fecha_registro ?>" readonly>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-blue">Editar</button>
+                <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#update-password-modal">Actualizar Contraseña</button>
             </form>
         </section>
     </div>
+</div>
+
+
+<!-- Modal Actualizar Password -->
+<div class="modal fade" id="update-password-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar Contraseña</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <form class="text-right" action="<?= base_url() ?>admin/update_password/" method="POST" id="form-update-password">
+                <div class="form-group row">
+                    <label for="contrasena-actual" class="col-md-5">Contraseña Actual:</label>
+                    <div class="col-md-7">
+                        <input type="password" class="form-control" id="contrasena-actual" name="contrasena-actual" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="contrasena-actual" class="col-md-5">Contraseña Nueva:</label>
+                    <div class="col-md-7">
+                        <input type="password" class="form-control" id="contrasena-nueva" name="contrasena-nueva" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="contrasena-actual" class="col-md-5">Confirmar contraseña:</label>
+                    <div class="col-md-7">
+                        <input type="password" class="form-control" id="contrasena-confirmar" name="contrasena-confirmar" required>
+                    </div>
+                    <div id="text-validacion-contrasena" class="text-feedback"></div>
+                </div>
+                <button type="submit" class="btn btn-blue" id="btn-actualizar-password" disabled>Actualizar</button>
+            </form>
+        </div>
+    </div>
+  </div>
 </div>

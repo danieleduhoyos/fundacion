@@ -73,7 +73,7 @@ class Admin extends CI_Controller {
 						$this->session->set_flashdata('msg', "Se envío un e-mail a $usu_correo por favor revise su bandeja de entrada.");
 						$this->session->set_flashdata('type', "success");
 					}else{
-						$this->session->set_flashdata('msg', "No se realizo  el envio de un e-mail a $usu_correo por favor intente nuevamente");
+						$this->session->set_flashdata('msg', "No se realizo el envio de un e-mail a $usu_correo por favor intente nuevamente");
 						$this->session->set_flashdata('type', "warning");
 					}
 				}
@@ -81,6 +81,44 @@ class Admin extends CI_Controller {
 				$this->session->set_flashdata('msg', "El e-mail $usu_correo no se encuentra registrado.");
 				$this->session->set_flashdata('type', "danger");
 			}
+		}
+
+		redirect(base_url()."admin/");
+	}
+
+	public function update_password(){
+		if(verify_token($this->session->usu_usuario, $this->session->token) && $this->input->post()){
+			$this->form_validation->set_rules('contrasena-actual', 'Actual', 'trim|required|min_length[5]|max_length[50]');
+			$this->form_validation->set_rules('contrasena-nueva', 'Nueva', 'trim|required|min_length[5]|max_length[50]');
+			$this->form_validation->set_rules('contrasena-confirmar', 'Confirmar', 'trim|required|min_length[5]|max_length[50]');
+
+			if ($this->form_validation->run() == TRUE) {
+				$contrasena_actual		= $this->input->post('contrasena-actual');
+				$contrasena_nueva		= $this->input->post('contrasena-nueva');
+				$contrasena_confirmar	= $this->input->post('contrasena-confirmar');
+
+				$request = $this->usuario_model->validate_password($this->session->usu_usuario, $contrasena_actual);
+
+				if($request && ($contrasena_nueva == $contrasena_confirmar)){
+					$update = $this->usuario_model->update_password($this->session->usu_usuario, $contrasena_nueva);
+
+					if($update){
+						$this->session->set_flashdata('msg', "Su contraseña se actualizó correctamente");
+						$this->session->set_flashdata('type', "success");
+					}else{
+						$this->session->set_flashdata('msg', "No se actualizó su contraseña. Por favor intentelo nuevamente.");
+						$this->session->set_flashdata('type', "danger");
+					}
+				}else{
+					$this->session->set_flashdata('msg', "Las contraseñas ingresadas no coinciden. Por favor intentelo nuevamente.");
+					$this->session->set_flashdata('type', "danger");
+				}
+			} else {
+				$this->session->set_flashdata('msg', "Datos ingresados incorrectos.");
+				$this->session->set_flashdata('type', "danger");
+			}
+
+			redirect(base_url()."usuario/");
 		}
 
 		redirect(base_url()."admin/");

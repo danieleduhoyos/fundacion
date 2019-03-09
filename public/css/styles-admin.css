@@ -58,6 +58,13 @@ html, body{
     border-bottom: 5px solid #76bddb;
 }
 
+.text-feedback{
+    width: 100%;
+    font-size: 12px;
+    text-align: right;
+    padding: 2px 1em;
+}
+
 /*
 ========================
 2. Inicio de Sesión

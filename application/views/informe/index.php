@@ -70,8 +70,7 @@ if(count($informes) > 0){
                     <label for="fecha_informe" class="col-md-4">Año: </label>
                     <div class="col-md-8">
                         <input type="number" class="form-control" id="fecha_informe" name="fecha" min=2000 max=2100 required>
-                        <div class="invalid-feedback" id="validacion-fecha-informe">
-                        </div>
+                        <div id="validacion-fecha-informe" class="text-feedback"> </div>
                     </div>
                 </div>
                 <div class="form-group row">
